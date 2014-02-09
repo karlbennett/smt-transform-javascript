@@ -1,0 +1,69 @@
+/*
+ * A test comment.
+ */
+['var']var['var'] [Identifier]CONSTANT[Identifier] = [StringLiteral]"this should not change."[StringLiteral];
+
+['function']function['function'] [Identifier]test[Identifier]([Identifier]arg[Identifier]) {
+
+    ['var']var['var'] [Identifier]one[Identifier] = [NumericLiteral]1[NumericLiteral];
+    ['var']var['var'] [Identifier]two[Identifier] = {
+        [Identifier]three[Identifier] : [StringLiteral]"three"[StringLiteral],
+        [Identifier]four[Identifier] : ['function']function['function'] () {
+            ['return']return['return'] ['this']this['this'].[Identifier]three[Identifier];
+        },
+        [Identifier]five[Identifier] : [NumericLiteral]5[NumericLiteral]
+    };
+
+    ['return']return['return'] ['function']function['function'] () {
+
+        ['return']return['return'] [Identifier]one[Identifier] + [Identifier]two[Identifier].[Identifier]five[Identifier] + [Identifier]arg[Identifier];
+    };
+}
+
+['function']function['function'] [Identifier]exceptions[Identifier]([Identifier]choice[Identifier]) {
+
+    ['switch']switch['switch'] ([Identifier]choice[Identifier]) {
+        ['case']case['case'] [NumericLiteral]1[NumericLiteral]:
+            ['throw']throw['throw'] [StringLiteral]"1 ah ah ah aaaaah."[StringLiteral];
+            ['break']break['break'];
+        ['case']case['case'] [StringLiteral]"two"[StringLiteral]:
+            ['throw']throw['throw'] [StringLiteral]"two ah ah ah aaaaah."[StringLiteral];
+            ['break']break['break'];
+        ['default']default['default']:
+            ['throw']throw['throw'] [StringLiteral]"three ah ah aaaaah. Maybe."[StringLiteral];
+    }
+}
+
+['function']function['function'] [Identifier]catcher[Identifier]([Identifier]arg[Identifier]) {
+
+    ['var']var['var'] [Identifier]three[Identifier] = [Identifier]CONSTANT[Identifier] ? [StringLiteral]"three"[StringLiteral] : [NumericLiteral]3[NumericLiteral];
+
+    ['var']var['var'] [Identifier]choices[Identifier] = [[StringLiteral]"one"[StringLiteral], [NumericLiteral]2[NumericLiteral], [Identifier]three[Identifier]];
+
+    ['try']try['try'] {
+
+        ['for']for['for'] (['var']var['var'] [Identifier]choice[Identifier] ['in']in['in'] [Identifier]choices[Identifier]) {
+
+            ['if']if['if'] (![Identifier]choices[Identifier].[Identifier]hasOwnProperty[Identifier]([Identifier]choice[Identifier])) {
+
+                // comment
+
+                ['continue']continue['continue'];
+            }
+            ['else']else['else'] {
+                [Identifier]exceptions[Identifier]([Identifier]choices[Identifier][[Identifier]choice[Identifier]]);
+            }
+        }
+
+    } ['catch']catch['catch'] ([Identifier]e[Identifier]) {
+
+        [Identifier]console[Identifier].[Identifier]error[Identifier]([Identifier]e[Identifier]);
+
+    } ['finally']finally['finally'] {
+
+        [Identifier]console[Identifier].[Identifier]log[Identifier]([StringLiteral]"some"[StringLiteral] + [StringLiteral]"thing"[StringLiteral]);
+    }
+}
+
+[Identifier]test[Identifier]([NumericLiteral]1[NumericLiteral]);
+[Identifier]catcher[Identifier]([StringLiteral]"blah"[StringLiteral]);

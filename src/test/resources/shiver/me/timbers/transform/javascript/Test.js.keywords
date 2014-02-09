@@ -1,0 +1,69 @@
+/*
+ * A test comment.
+ */
+[KEYWORD]var[KEYWORD] CONSTANT = "this should not change.";
+
+[KEYWORD]function[KEYWORD] test(arg) {
+
+    [KEYWORD]var[KEYWORD] one = 1;
+    [KEYWORD]var[KEYWORD] two = {
+        three : "three",
+        four : [KEYWORD]function[KEYWORD] () {
+            [KEYWORD]return[KEYWORD] [KEYWORD]this[KEYWORD].three;
+        },
+        five : 5
+    };
+
+    [KEYWORD]return[KEYWORD] [KEYWORD]function[KEYWORD] () {
+
+        [KEYWORD]return[KEYWORD] one + two.five + arg;
+    };
+}
+
+[KEYWORD]function[KEYWORD] exceptions(choice) {
+
+    [KEYWORD]switch[KEYWORD] (choice) {
+        [KEYWORD]case[KEYWORD] 1:
+            [KEYWORD]throw[KEYWORD] "1 ah ah ah aaaaah.";
+            [KEYWORD]break[KEYWORD];
+        [KEYWORD]case[KEYWORD] "two":
+            [KEYWORD]throw[KEYWORD] "two ah ah ah aaaaah.";
+            [KEYWORD]break[KEYWORD];
+        [KEYWORD]default[KEYWORD]:
+            [KEYWORD]throw[KEYWORD] "three ah ah aaaaah. Maybe.";
+    }
+}
+
+[KEYWORD]function[KEYWORD] catcher(arg) {
+
+    [KEYWORD]var[KEYWORD] three = CONSTANT ? "three" : 3;
+
+    [KEYWORD]var[KEYWORD] choices = ["one", 2, three];
+
+    [KEYWORD]try[KEYWORD] {
+
+        [KEYWORD]for[KEYWORD] ([KEYWORD]var[KEYWORD] choice [KEYWORD]in[KEYWORD] choices) {
+
+            [KEYWORD]if[KEYWORD] (!choices.hasOwnProperty(choice)) {
+
+                // comment
+
+                [KEYWORD]continue[KEYWORD];
+            }
+            [KEYWORD]else[KEYWORD] {
+                exceptions(choices[choice]);
+            }
+        }
+
+    } [KEYWORD]catch[KEYWORD] (e) {
+
+        console.error(e);
+
+    } [KEYWORD]finally[KEYWORD] {
+
+        console.log("some" + "thing");
+    }
+}
+
+test(1);
+catcher("blah");
