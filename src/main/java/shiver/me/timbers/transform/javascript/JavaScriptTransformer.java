@@ -6,8 +6,8 @@ import shiver.me.timbers.transform.antlr4.Antlr4StringTransformer;
 import javax.activation.MimeType;
 
 /**
- * A StringTransformer for Java source code, it will apply any Transformations that have names matching the different
- * token and rule names. These names can be found in the {@link JavaScriptParser#tokenNames} and
+ * A StringTransformer for JavaScript source code, it will apply any Transformations that have names matching the
+ * different token and rule names. These names can be found in the {@link JavaScriptParser#tokenNames} and
  * {@link JavaScriptParser#ruleNames} arrays.
  */
 public class JavaScriptTransformer extends Antlr4StringTransformer<JavaScriptParser> {
